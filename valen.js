@@ -44,7 +44,7 @@ window.onload = function () {
                 </div>
             `;
         } else {
-            document.body.innerHTML = <h1>Pesan tidak ditemukan atau sudah kadaluarsa.</h1>;
+            document.body.innerHTML = <h1>Pesan tidak ditemukan atau sudah kadaluarsa.<h1>;
         }
     }
 };
