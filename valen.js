@@ -5,14 +5,16 @@ function generateLink() {
         return;
     }
 
-    let encodedMessage = encodeURIComponent(message);
-    let link = window.location.origin + window.location.pathname + "?msg=" + encodedMessage;
+    // Simpan pesan di sessionStorage (hilang setelah browser ditutup)
+    sessionStorage.setItem("valentineMessage", message);
 
-    // Menampilkan link tanpa teks tambahan
+    // Tampilkan link tanpa parameter
+    let link = window.location.origin + window.location.pathname;
+
     document.getElementById("output").classList.remove("hidden");
     document.getElementById("share-link").value = link;
 
-    // Menghapus textarea dan tombol setelah link dibuat
+    // Sembunyikan textarea dan tombol setelah link dibuat
     document.getElementById("message").style.display = "none";
     document.querySelector("button").style.display = "none";
 }
@@ -25,11 +27,29 @@ function copyLink() {
 }
 
 window.onload = function () {
-    let params = new URLSearchParams(window.location.search);
-    if (params.has("msg")) {
-        let message = decodeURIComponent(params.get("msg"));
-        
-        // Menampilkan hanya pesan tanpa elemen lain
+    // Cek apakah ada pesan yang tersimpan
+    let message = sessionStorage.getItem("valentineMessage");
+    
+    if (message) {
+        // Tampilkan hanya pesan tanpa elemen lain
         document.body.innerHTML = `<div class="container"><p>${message}</p></div>`;
+
+        // Hapus pesan setelah ditampilkan (agar tidak muncul lagi saat reload)
+        sessionStorage.removeItem("valentineMessage");
+    } else {
+        // Jika tidak ada pesan, tampilkan halaman utama
+        document.body.innerHTML = `
+            <div class="container">
+                <h1>Happy Valentine’s Day! ❤️</h1>
+                <p>Kirimkan ucapan spesial untuk orang yang kamu sayangi!</p>
+                <textarea id="message" placeholder="Tulis ucapan romantis di sini..."></textarea>
+                <button onclick="generateLink()">Buat Link Ucapan</button>
+                <div id="output" class="hidden">
+                    <p>Bagikan link ini:</p>
+                    <input type="text" id="share-link" readonly>
+                    <button onclick="copyLink()">Salin Link</button>
+                </div>
+            </div>
+        `;
     }
 };
