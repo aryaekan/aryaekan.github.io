@@ -12,7 +12,7 @@ function generateLink() {
     localStorage.setItem("valentineMessage_" + messageId, message);
 
     // Buat link dengan ID unik
-    let link = window.location.origin + window.location.pathname + "?id=" + messageId;
+    let link = window.location.href + "?id=" + messageId;
 
     let linkInput = document.getElementById("share-link");
     linkInput.value = link;
