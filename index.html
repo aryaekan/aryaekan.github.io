@@ -7,16 +7,20 @@
     <link rel="stylesheet" href="valen.css">
 </head>
 <body>
-
-    <div id="input-container" class="container">
-        <h1>💖 Buat Ucapan Valentine 💖</h1>
-        <textarea id="message" placeholder="Tulis ucapanmu di sini..."></textarea>
-        <button onclick="generateLink()">Buat Link</button>
-        <input type="text" id="share-link" class="hidden" readonly>
-        <button id="copy-btn" class="hidden" onclick="copyLink()">Salin Link</button>
+    <div class="container">
+        <h1>Happy Valentine’s Day! ❤</h1>
+        <p>Project gabut arya hehehehe</p>
+        
+        <textarea id="message" placeholder="Tulis kalimat romantis di sini hehehe"></textarea>
+        <button onclick="generateLink()">Buat Link Ucapan</button>
+        
+        <div id="output" class="hidden">
+            <p>Bagikan link ini:</p>
+            <input type="text" id="share-link" readonly>
+            <button onclick="copyLink()">Salin Link</button>
+        </div>
     </div>
 
     <script src="valen.js"></script>
-
 </body>
 </html>
