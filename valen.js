@@ -1,5 +1,8 @@
+// Fungsi untuk membuat link
 function generateLink() {
     let message = document.getElementById("message").value;
+    
+    // Jika pesan kosong, tampilkan peringatan
     if (message.trim() === "") {
         alert("Tulis ucapan dulu!");
         return;
@@ -14,37 +17,20 @@ function generateLink() {
     // Buat link dengan ID unik
     let link = window.location.href + "?id=" + messageId;
 
+    // Tampilkan link di input field
     let linkInput = document.getElementById("share-link");
     linkInput.value = link;
-    linkInput.classList.remove("hidden");
+    linkInput.classList.remove("hidden");  // Hapus kelas 'hidden' untuk menampilkan input
 
+    // Tampilkan tombol salin
     let copyBtn = document.getElementById("copy-btn");
-    copyBtn.classList.remove("hidden");
+    copyBtn.classList.remove("hidden");  // Hapus kelas 'hidden' untuk menampilkan tombol salin
 }
 
+// Fungsi untuk menyalin link
 function copyLink() {
     let copyText = document.getElementById("share-link");
     copyText.select();
     document.execCommand("copy");
-    alert("Link berhasil disalin!");
+    alert("Link berhasil disalin!");
 }
-
-window.onload = function () {
-    let params = new URLSearchParams(window.location.search);
-    let messageId = params.get("id"); // Ambil ID dari URL
-
-    if (messageId) {
-        let message = localStorage.getItem("valentineMessage_" + messageId);
-        
-        if (message) {
-            document.body.innerHTML = `
-                <div class="container">
-                    <h1>💌 Ucapan Valentine untukmu! 💌</h1>
-                    <p class="valentine-message">"${message}"</p>
-                </div>
-            `;
-        } else {
-            document.body.innerHTML = <h1>Pesan tidak ditemukan atau sudah kadaluarsa.<h1>;
-        }
-    }
-};
