@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ucapan valentine</title>
+    <title>Ucapan Valentine</title>
     <link rel="stylesheet" href="valen.css">
 </head>
 <body>
-
-    <div id="input-container" class="container">
-        <h1>💖 Buat Ucapan Valentine 💖</h1>
-        <textarea id="message" placeholder="Tulis ucapanmu di sini..."></textarea>
-        <button onclick="generateLink()">Buat Link</button> <!-- Tombol untuk generate link -->
-        <input type="text" id="share-link" class="hidden" readonly>
-        <button id="copy-btn" class="hidden" onclick="copyLink()">Salin Link</button>
+    <div class="container">
+        <h1>Happy Valentine’s Day! ❤</h1>
+        <p>By Arya Eka Nugraha</p>
+        
+        <textarea id="message" placeholder="Tulis ucapan romantis di sini..."></textarea>
+        <button onclick="generateLink()">Buat Link Ucapan</button>
+        
+        <div id="output" class="hidden">
+            <p>Bagikan link ini:</p>
+            <input type="text" id="share-link" readonly>
+            <button onclick="copyLink()">Salin Link</button>
+        </div>
     </div>
 
-    <!-- Pastikan script.js terhubung dengan benar -->
-    <script src="valen.js"></script> <!-- Skrip diletakkan setelah elemen HTML agar terdeteksi -->
+    <script src="valen.js"></script>
 </body>
 </html>
