@@ -4,19 +4,12 @@ function generateLink() {
         alert("Tulis ucapan dulu!");
         return;
     }
-
-    // Simpan pesan di sessionStorage agar hanya bertahan selama sesi
-    sessionStorage.setItem("valentineMessage", message);
-
-    // Buat link tanpa parameter atau hash
-    let link = window.location.origin + window.location.pathname;
-
-    document.getElementById("output").classList.remove("hidden");
+    
+    let encodedMessage = encodeURIComponent(message);
+    let link = window.location.href + "?msg=" + encodedMessage;
+    
     document.getElementById("share-link").value = link;
-
-    // Sembunyikan input dan tombol setelah link dibuat
-    document.getElementById("message").style.display = "none";
-    document.querySelector("button").style.display = "none";
+    document.getElementById("output").classList.remove("hidden");
 }
 
 function copyLink() {
@@ -27,14 +20,14 @@ function copyLink() {
 }
 
 window.onload = function () {
-    // Cek apakah ada pesan yang tersimpan di sessionStorage
-    let message = sessionStorage.getItem("valentineMessage");
-    
-    if (message) {
-        // Tampilkan hanya pesan tanpa elemen lain
-        document.body.innerHTML = `<div class="container"><p>${message}</p></div>`;
-
-        // Hapus pesan setelah ditampilkan agar tidak muncul lagi saat reload
-        sessionStorage.removeItem("valentineMessage");
+    let params = new URLSearchParams(window.location.search);
+    if (params.has("msg")) {
+        let message = decodeURIComponent(params.get("msg"));
+        document.body.innerHTML = `
+            <div class="container">
+                <h1>💌 Ucapan Valentine untukmu! 💌</h1>
+                <p>"${message}"</p>
+            </div>
+        `;
     }
 };
