@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Valentine</title>
+    <link rel="stylesheet" href="valen.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Valentine’s Day! ❤</h1>
+        <p>Program Gabut Arya hehehhehe</p>
+        
+        <textarea id="message" placeholder="Tulis kalimat romantis di sini hehe"></textarea>
+        <button onclick="generateLink()">Buat Link Ucapan</button>
+        
+        <div id="output" class="hidden">
+            <p>Bagikan link ke doi:</p>
+            <input type="text" id="share-link" readonly>
+            <button onclick="copyLink()">Salin Link</button>
+        </div>
+    </div>
+
+    <script src="valen.js"></script>
+</body>
+</html>
