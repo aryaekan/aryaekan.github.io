@@ -6,7 +6,7 @@ function generateLink() {
     }
     
     let encodedMessage = encodeURIComponent(message);
-    let link = window.location.href;
+    let link = window.location.href + "?msg=" + encodedMessage;
     
     document.getElementById("share-link").value = link;
     document.getElementById("output").classList.remove("hidden");
