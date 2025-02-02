@@ -4,12 +4,22 @@ function generateLink() {
         alert("Tulis ucapan dulu!");
         return;
     }
-    
-    let encodedMessage = encodeURIComponent(message);
-    let link = window.location.href + "?msg=" + encodedMessage;
-    
-    document.getElementById("share-link").value = link;
-    document.getElementById("output").classList.remove("hidden");
+
+    // Buat ID unik untuk pesan
+    let messageId = Date.now().toString(36) + Math.random().toString(36).substring(2);
+
+    // Simpan pesan di localStorage dengan ID unik
+    localStorage.setItem("valentineMessage_" + messageId, message);
+
+    // Buat link dengan ID unik
+    let link = window.location.origin + window.location.pathname + "?id=" + messageId;
+
+    let linkInput = document.getElementById("share-link");
+    linkInput.value = link;
+    linkInput.classList.remove("hidden");
+
+    let copyBtn = document.getElementById("copy-btn");
+    copyBtn.classList.remove("hidden");
 }
 
 function copyLink() {
@@ -21,13 +31,20 @@ function copyLink() {
 
 window.onload = function () {
     let params = new URLSearchParams(window.location.search);
-    if (params.has("msg")) {
-        let message = decodeURIComponent(params.get("msg"));
-        document.body.innerHTML = `
-            <div class="container">
-                <h1>💌 Ucapan Valentine untukmu! 💌</h1>
-                <p>"${message}"</p>
-            </div>
-        `;
+    let messageId = params.get("id"); // Ambil ID dari URL
+
+    if (messageId) {
+        let message = localStorage.getItem("valentineMessage_" + messageId);
+        
+        if (message) {
+            document.body.innerHTML = `
+                <div class="container">
+                    <h1>💌 Ucapan Valentine untukmu! 💌</h1>
+                    <p class="valentine-message">"${message}"</p>
+                </div>
+            `;
+        } else {
+            document.body.innerHTML = <h1>Pesan tidak ditemukan atau sudah kadaluarsa.</h1>;
+        }
     }
 };
