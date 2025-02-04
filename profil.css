@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Tentang Saya */
+#tentang {
+    padding: 50px 0;
+    background: #fff;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #333;
+    object-fit: cover; /* Memastikan foto tidak terdistorsi */
+}
+
+.about-content div {
+    max-width: 600px;
+}
+
+.about-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Portofolio */
+#portofolio {
+    padding: 50px 0;
+    background: #f4f4f4;
+}
+
+#portofolio h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.portfolio-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.portfolio-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.portfolio-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Kontak */
+#kontak {
+    padding: 50px 0;
+    background: #fff;
+}
+
+#kontak h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#kontak p {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+#kontak a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#kontak a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .portfolio-items {
+        flex-direction: column;
+    }
+
+    .portfolio-item {
+        flex: 1 1 100%;
+}
+}
